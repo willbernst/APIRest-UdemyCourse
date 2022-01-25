@@ -447,5 +447,5 @@ $RECYCLE.BIN/
 ##
 ## Visual Studio Code
 ##
-.vs/*
+.vs/
 .vscode/
