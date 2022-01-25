@@ -1,0 +1,10 @@
+USE rest_with_asp_net_udemy;
+insert into Company (stock_name, stock_sector, ein, address) values ('Orexigen Therapeutics, Inc.', 'Health Care', '99-5000844', '57399 Bluejay Alley');
+insert into Company (stock_name, stock_sector, ein, address) values ('Insight Enterprises, Inc.', 'Consumer Services', '43-7782754', '19 Myrtle Circle');
+insert into Company (stock_name, stock_sector, ein, address) values ('Quest Diagnostics Incorporated', 'Health Care', '33-4799451', '60143 Clarendon Circle');
+insert into Company (stock_name, stock_sector, ein, address) values ('John Hancock Hedged Equity & Income Fund', 'n/a', '68-2882398', '35662 Aberg Center');
+insert into Company (stock_name, stock_sector, ein, address) values ('Alaska Air Group, Inc.', 'Transportation', '90-7299509', '307 Messerschmidt Avenue');
+insert into Company (stock_name, stock_sector, ein, address) values ('Qwest Corporation', 'Public Utilities', '78-2345922', '4151 Heath Alley');
+insert into Company (stock_name, stock_sector, ein, address) values ('Pearson, Plc', 'Consumer Services', '31-4855177', '173 Scott Crossing');
+insert into Company (stock_name, stock_sector, ein, address) values ('SkyWest, Inc.', 'Transportation', '60-3356024', '9 Thackeray Hill');
+insert into Company (stock_name, stock_sector, ein, address) values ('Hubbell Inc', 'Capital Goods', '97-8826322', '19848 Buhler Alley');
