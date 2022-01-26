@@ -41,6 +41,7 @@ namespace RESTAPIUdemyCourse.Data.Converter.Implementation
 
         public List<CompanyVO> Parse(List<Company> origin)
         {
+            if(origin == null) return null;
             return origin.Select(item => Parse(item)).ToList();
         }
     }

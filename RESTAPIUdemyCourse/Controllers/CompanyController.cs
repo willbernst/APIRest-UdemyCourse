@@ -36,15 +36,26 @@ namespace RESTAPIUdemyCourse.Controllers
             return Ok(createCompany);
         }
 
-        [HttpGet]
-        [ProducesResponseType((200), Type = typeof(List<CompanyVO>))]
+        //[HttpGet]
+        //[ProducesResponseType((200), Type = typeof(List<CompanyVO>))]
+        //[ProducesResponseType(204)]
+        //[ProducesResponseType(400)]
+        //[ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        //public IActionResult FindAll()
+        //{
+        //    return Ok(_companyBusiness.FindAll());
+        //}
+
+        [HttpGet("{sortDirection}/{pageSize}/{page}")]
+        [ProducesResponseType((200), Type = typeof(CompanyVO))]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult FindAll()
+        public IActionResult FindWithPagedSearch([FromQuery] string name, string sortDirection, int pageSize, int page)
         {
-            return Ok(_companyBusiness.FindAll());
+            return Ok(_companyBusiness.FindWithPagedSearch(name, sortDirection, pageSize, page));
         }
 
         [HttpGet("{id}")]
@@ -58,6 +69,19 @@ namespace RESTAPIUdemyCourse.Controllers
             var companyId = _companyBusiness.FindById(id);
             if(companyId == null) return NotFound();
             return Ok(companyId);
+        }
+
+        [HttpGet("findCompanyByName")]
+        [ProducesResponseType((200), Type = typeof(CompanyVO))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult FindByName([FromQuery] string stockName)
+        {
+            var company = _companyBusiness.FindByName(stockName);
+            if (company == null) return NotFound();
+            return Ok(company);
         }
 
         [HttpPut]

@@ -2,6 +2,7 @@
 using RESTAPIUdemyCourse.Model.Context;
 using RESTAPIUdemyCourse.Repository.GenericRepository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RESTAPIUdemyCourse.Repository
@@ -31,6 +32,23 @@ namespace RESTAPIUdemyCourse.Repository
                 }
             }
             return user;
+        }
+
+        public List<Person> FindByName(string firstName, string lastName)
+        {
+            if (!string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+            {
+                return _mySqlContext.People.Where(p => p.FirstName.Contains(firstName) && p.LastName.Contains(lastName)).ToList();
+            }
+            if (string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+            {
+                return _mySqlContext.People.Where(p => p.LastName.Contains(lastName)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(firstName) && string.IsNullOrWhiteSpace(lastName))
+            {
+                return _mySqlContext.People.Where(p => p.LastName.Contains(firstName)).ToList();
+            }
+            return null;
         }
     }
 }

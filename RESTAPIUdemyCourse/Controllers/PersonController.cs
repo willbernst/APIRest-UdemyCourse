@@ -42,15 +42,26 @@ namespace RESTAPIUdemyCourse.Controllers
             return Ok(createPerson);
         }
 
-        [HttpGet]
-        [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+        //[HttpGet()]
+        //[ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+        //[ProducesResponseType(204)]
+        //[ProducesResponseType(400)]
+        //[ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        //public IActionResult FindAll()
+        //{
+        //    return Ok(_personBusiness.FindAll());
+        //}
+
+        [HttpGet("{sortDirection}/{pageSize}/{page}")]
+        [ProducesResponseType((200), Type = typeof(PersonVO))]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult FindAll()
+        public IActionResult FindWithPagedSearch([FromQuery] string name, string sortDirection, int pageSize, int page)
         {
-            return Ok(_personBusiness.FindAll());
+            return Ok(_personBusiness.FindWithPagedSearch(name, sortDirection, pageSize, page));
         }
 
         [HttpGet("{id}")]
@@ -64,6 +75,20 @@ namespace RESTAPIUdemyCourse.Controllers
             var personId = _personBusiness.FindById(id);
             if(personId == null) return NotFound();
             return Ok(personId);
+        }
+
+
+        [HttpGet("findPersonByName")]
+        [ProducesResponseType((200), Type = typeof(PersonVO))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult FindByName([FromQuery] string firstName, [FromQuery] string lastName)
+        {
+            var person = _personBusiness.FindByName(firstName, lastName);
+            if (person == null) return NotFound();
+            return Ok(person);
         }
 
         [HttpPut]

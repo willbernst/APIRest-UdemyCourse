@@ -117,6 +117,7 @@ namespace RESTAPIUdemyCourse
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRespository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
 
 
             services.AddTransient<ITokenService, TokenService>();
