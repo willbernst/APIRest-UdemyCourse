@@ -16,6 +16,8 @@ as well as change data and delete the person or company through their id.
   - Swagger support.
   - CORS enabled.
   - Implementing authentication using a JWT Token. 
+  - Paged Search with Query Params.
+  - Files Upload and Download.
   
 
 
