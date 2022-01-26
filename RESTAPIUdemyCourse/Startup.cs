@@ -24,6 +24,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace RESTAPIUdemyCourse
 {
@@ -110,14 +112,18 @@ namespace RESTAPIUdemyCourse
                 });
             });
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             //Dependency Injection
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<ICompanyBusiness, CompanyBusinessImplementation>();
             services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
+            services.AddScoped<IFileBusiness, FileBusinessImplementations>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRespository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+
 
 
             services.AddTransient<ITokenService, TokenService>();
