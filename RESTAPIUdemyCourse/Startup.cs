@@ -84,10 +84,10 @@ namespace RESTAPIUdemyCourse
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
 
-            if (Environment.IsDevelopment())
-            {
-                MigrateDataBase(connection);
-            }
+            //if (Environment.IsDevelopment())
+            //{
+            //    MigrateDataBase(connection);
+            //}
 
             var filterOptions = new HyperMediaFilterOptions();
             filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());

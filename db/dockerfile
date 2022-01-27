@@ -1,0 +1,5 @@
+FROM mysql:5.7.22
+EXPOSE 3306
+COPY ./RESTAPIUdemyCourse/Db/Migrations/ /home/database
+COPY ./RESTAPIUdemyCourse/Db/Dataset/ /home/database
+COPY ./RESTAPIUdemyCourse/Ci/init_database.sh /docker-entrypoint-init.d/init_database.sh
